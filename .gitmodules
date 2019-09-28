@@ -1,0 +1,3 @@
+[submodule "logpy"]
+	path = logpy
+	url = https://github.com/logpy/logpy.git
