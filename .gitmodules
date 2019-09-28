@@ -1,3 +1,9 @@
 [submodule "logpy"]
 	path = logpy
 	url = https://github.com/logpy/logpy.git
+[submodule "pyDatalog"]
+	path = pyDatalog
+	url = https://github.com/pcarbonn/pyDatalog.git
+[submodule "pythological"]
+	path = pythological
+	url = https://github.com/darius/pythological.git
