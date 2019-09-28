@@ -16,17 +16,56 @@ def compsort(junk):
              specified in the COUNT table.
     """
     # Set COUNT[1] through COUNT[N] to 0.
+    # Knuth is using 1-based index.
     N = len(junk) - 1
     count = [0 for i in junk]
     i = N
     while i >= 1:
         j = i - 1
         while j >= 0:
-            print("i, j: ", i, j)
+            # print("i, j: ", i, j)
             if junk[i] < junk[j]:
+                # print("count[j] = count[j] + 1")
+                # print("j = ", j)
+                count[j] = count[j] + 1
+                # print("count[j] = ", count[j])
+            else:
+                # print("count[i] = count[i] + 1")
+                # print("i  ", i)
+                count[i] = count[i] + 1
+                # print("count[i] = ", count[i])
+            # print("dec j, j = ", j-1)
+            j = j - 1
+        # print("dec i, i = ", i-1)
+        i = i - 1
+    return count
+def pycompsort(junk):
+    """A more pythonic version with the same spirit."""
+    count = [0 for i in junk]
+    for i, value in enumerate(junk):
+        for j in range(i - 1, -1, -1):
+            if junk[j] > value:
                 count[j] = count[j] + 1
             else:
                 count[i] = count[i] + 1
-            j = j - 1
-        i = i - 1
     return count
+
+def sortwithtable(junk, count_table):
+    """Use the count table to sort the junk list."""
+    newjunk = [0 for i in junk]
+    for i, j in enumerate(count_table):
+        newjunk[j] = junk[i]
+    return newjunk
+
+def insertion_sort(L):
+    """A normal insertion sort.
+    Mutates the argument. No return.
+    """
+    for i in range(1, len(L)):
+        j = i - 1
+        key = L[i]
+        while(L[j] > key) and (j >= 0):
+            L[j+1] = L[j]
+            j = j - 1
+        L[j+1] = key
+
