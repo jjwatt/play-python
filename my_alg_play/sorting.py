@@ -69,3 +69,36 @@ def insertion_sort(L):
             j = j - 1
         L[j+1] = key
 
+
+# Merge sort, how I would do it in scheme.
+def mymerge(left, right):
+    if not left:
+        return right
+    if not right:
+        return left
+    if left[0] > right[0]:
+        return [right[0]] + mymerge(left, right[1:])
+    else:
+        return [left[0]] + mymerge(left[1:], right)
+
+
+def take(l, n):
+    if not n:
+        return list()
+    else:
+        return [l[0]] + take(l[1:], n - 1)
+
+
+def mymergesort(alist):
+    if len(alist) < 2:
+        return alist
+    split = len(alist) // 2
+    left  = alist[:split]
+    right = alist[split:]
+    return mymerge(mymergesort(left), mymergesort(right))
+
+
+def createlist(n, rng=None):
+    if rng is None:
+        rng = (1, 255)
+    return random.choices(range(*rng), k=n)
