@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+cp runhy.py hy
+cd hy && python ./runhy.py
+rm runhy.py
+cd ..
+
