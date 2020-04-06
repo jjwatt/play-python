@@ -1,7 +1,7 @@
 # simple python shell to get started
-#{ pkgs ? import <nixpkgs> {} }:
-#with pkgs;
-with import <nixpkgs> {};
+{ pkgs ? import <nixpkgs> {} }:
+with pkgs;
+#with import <nixpkgs> {};
 let
 	pythonEnv = python38.withPackages (ps: [
 		ps.ipython
