@@ -8,10 +8,6 @@ python3Packages.buildPythonApplication rec {
     sha256 = "04dfwm336gw61fmgwikvh0cnxk682p19b4w555wl5d7mlym4rwj2";
   };
 
-  # buildInputs = with python3Packages; [
-  #   setuptools
-  # ];
-
   checkInputs = with python3Packages; [
     flake8
     pytest
@@ -27,6 +23,12 @@ python3Packages.buildPythonApplication rec {
 		rply
 		pygments
 	];
+
+  doCheck = false;
+
+  checkPhase = ''
+    PATH=$out/bin:$PATH pytest
+  '';
 
 	meta = with stdenv.lib; {
 		description = "A LISP dialect embedded in Python";
