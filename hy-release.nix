@@ -1,9 +1,13 @@
 { stdenv, fetchurl, python38Packages }:
 
 python38Packages.buildPythonApplication rec {
-	pname = "myhy38";
-	version = "0.18.0-16-g88f30c4";
-	src = ./hy;
+	pname = "hy";
+	version = "0.18.0";
+	src = python38Packages.fetchPypi {
+    inherit pname version;
+    sha256 = "04dfwm336gw61fmgwikvh0cnxk682p19b4w555wl5d7mlym4rwj2";
+  };
+
 	propogatedBuildInputs = with python38Packages; [
 		appdirs
 		astor
@@ -19,7 +23,7 @@ python38Packages.buildPythonApplication rec {
 		# only needed for install
 		setuptools
 	];
-	checkInputs = with python38Packages; [ pytest ];
+	# checkInputs = with python38Packages; [ pytest ];
 	meta = with stdenv.lib; {
 		description = "A LISP dialect embedded in Python";
 		homepage = "http://hylang.org/";
