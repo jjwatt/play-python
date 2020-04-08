@@ -1,4 +1,4 @@
-{ stdenv, python3, python3Packages }:
+{ stdenv, python3Packages }:
 
 python3Packages.buildPythonApplication rec {
 	pname = "hy";
@@ -24,11 +24,12 @@ python3Packages.buildPythonApplication rec {
 		pygments
 	];
 
-  doCheck = false;
-
   checkPhase = ''
     PATH=$out/bin:$PATH pytest
   '';
+
+  # Hy does not include tests in the source distribution from PyPI, so skip testing.
+  doCheck = false;
 
 	meta = with stdenv.lib; {
 		description = "A LISP dialect embedded in Python";
