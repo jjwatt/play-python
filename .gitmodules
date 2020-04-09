@@ -7,6 +7,3 @@
 [submodule "pythological"]
 	path = pythological
 	url = https://github.com/darius/pythological.git
-[submodule "hy"]
-	path = hy
-	url = https://github.com/hylang/hy.git
